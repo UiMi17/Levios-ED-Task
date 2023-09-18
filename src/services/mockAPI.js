@@ -7,6 +7,6 @@ export const fetchProducts = async () => {
     const result = await axios.get("/products");
     return result.data;
   } catch (error) {
-    console.log(error.message);
+    console.log("Error:", error.message);
   }
 };
