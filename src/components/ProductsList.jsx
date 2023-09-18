@@ -1,5 +1,6 @@
-const ProductsList = () => {
-  return <h1>Products list</h1>;
+const ProductsList = ({ products }) => {
+  console.log(products);
+  return <ul></ul>;
 };
 
 export default ProductsList;

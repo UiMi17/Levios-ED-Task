@@ -1,10 +1,10 @@
 import { Route, Routes } from "react-router-dom";
-import ProductsList from "./components/ProductsList";
+import Products from "./views/Products";
 
 function App() {
   return (
     <Routes>
-      <Route index element={<ProductsList />} />
+      <Route index element={<Products />} />
       <Route path="*" element={<h1>Page not found</h1>} />
     </Routes>
   );
