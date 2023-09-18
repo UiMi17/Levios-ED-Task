@@ -3,10 +3,12 @@ import ProductsList from "../components/ProductsList/ProductsList";
 import { fetchProducts } from "../services/mockAPI";
 import Filter from "../components/Filter/Filter";
 import ErrorBoundary from "../highOrderedComponents/ErrorBoundary";
+import { useDebounce } from "../hooks/useDebounce";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
   const [filter, setFilter] = useState("");
+  const debouncedFilter = useDebounce(filter, 800);
 
   useEffect(() => {
     const getProducts = async () => {
@@ -24,7 +26,7 @@ const Products = () => {
   };
 
   const filteredProducts = products.filter((product) => {
-    return product.name.toLowerCase().includes(filter.toLowerCase());
+    return product.name.toLowerCase().includes(debouncedFilter.toLowerCase());
   });
 
   return (

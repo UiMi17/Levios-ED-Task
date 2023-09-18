@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 import { StyledFilterForm, StyledFilterInput } from "./StyledFilter";
 import { useFormik } from "formik";
-
 // import * as Yup from "yup";
 
 // const validationSchema = Yup.object().shape({});
