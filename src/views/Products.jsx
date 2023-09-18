@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import ProductsList from "../components/ProductsList/ProductsList";
 import { fetchProducts } from "../services/mockAPI";
 import Filter from "../components/Filter/Filter";
@@ -10,6 +10,13 @@ const Products = () => {
   const [filter, setFilter] = useState("");
   const debouncedFilter = useDebounce(filter, 800);
 
+  const handleFilterInputChange = useCallback(
+    (value) => {
+      setFilter(value);
+    },
+    []
+  );
+
   useEffect(() => {
     const getProducts = async () => {
       const products = await fetchProducts();
@@ -19,11 +26,6 @@ const Products = () => {
 
     getProducts();
   }, []);
-
-  const handleFilterInputChange = (ev) => {
-    const filterRequest = ev.target.value;
-    setFilter(filterRequest);
-  };
 
   const filteredProducts = products.filter((product) => {
     return product.name.toLowerCase().includes(debouncedFilter.toLowerCase());

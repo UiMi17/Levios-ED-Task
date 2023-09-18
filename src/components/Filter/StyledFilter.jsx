@@ -7,9 +7,13 @@ export const StyledFilterForm = styled.form`
 `;
 
 export const StyledFilterInput = styled.input`
-  width: 100%;
-  max-width: 600px;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
 `;
+
+export const StyledErrorMessage = styled.div`
+  width: 100%;
+  text-align: center;
+  color: red;
+`
