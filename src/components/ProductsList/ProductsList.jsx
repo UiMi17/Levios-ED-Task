@@ -1,4 +1,4 @@
-import ProductsListElement from "./ProductsListElement/ProductsListElement";
+import ProductsListElement from "../ProductsListElement/ProductsListElement";
 
 const ProductsList = ({ products }) => {
   return (

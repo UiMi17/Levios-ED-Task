@@ -11,8 +11,8 @@ const ProductsListElement = ({ bsr_category, img, link, name, price }) => {
     <StyledListItem>
       <StyledImage src={img} alt={name} />
       <StyledLink href={link}>{name}</StyledLink>
-      <StyledPrice>Ціна: {price}</StyledPrice>
-      <StyledCategory>Категорія: {bsr_category}</StyledCategory>
+      <StyledPrice>Price: {price}</StyledPrice>
+      <StyledCategory>Category: {bsr_category}</StyledCategory>
     </StyledListItem>
   );
 };
