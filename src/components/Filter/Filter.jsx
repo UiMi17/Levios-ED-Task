@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { StyledFilterForm, StyledFilterInput } from "./StyledFilter";
 
 const Filter = ({ handleFilterInputChange }) => {
@@ -12,6 +13,10 @@ const Filter = ({ handleFilterInputChange }) => {
       </label>
     </StyledFilterForm>
   );
+};
+
+Filter.propTypes = {
+  handleFilterInputChange: PropTypes.func.isRequired,
 };
 
 export default Filter;

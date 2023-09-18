@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import ProductsListElement from "../ProductsListElement/ProductsListElement";
 
 const ProductsList = ({ products }) => {
@@ -17,6 +18,10 @@ const ProductsList = ({ products }) => {
       })}
     </ul>
   );
+};
+
+ProductsList.propTypes = {
+  products: PropTypes.array.isRequired,
 };
 
 export default ProductsList;

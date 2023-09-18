@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import {
   StyledCategory,
   StyledImage,
@@ -15,6 +16,14 @@ const ProductsListElement = ({ bsr_category, img, link, name, price }) => {
       <StyledCategory>Category: {bsr_category}</StyledCategory>
     </StyledListItem>
   );
+};
+
+ProductsListElement.propTypes = {
+  bsr_category: PropTypes.string,
+  img: PropTypes.string,
+  link: PropTypes.string,
+  name: PropTypes.string,
+  price: PropTypes.string,
 };
 
 export default ProductsListElement;
