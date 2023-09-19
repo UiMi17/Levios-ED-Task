@@ -26,7 +26,16 @@ const ProductsList = ({ products }) => {
 };
 
 ProductsList.propTypes = {
-  products: PropTypes.array.isRequired,
+  products: PropTypes.arrayOf(
+    PropTypes.shape({
+      img: PropTypes.string,
+      asin: PropTypes.string,
+      price: PropTypes.string,
+      bsr_category: PropTypes.string,
+      link: PropTypes.string,
+      name: PropTypes.string,
+    })
+  ),
 };
 
 export default ProductsList;

@@ -47,7 +47,7 @@ const Filter = ({
       <StyledFilterLabel>
         <TextField
           name="filter"
-          error={formik.errors.filter}
+          error={formik.errors.filter !== undefined}
           helperText={formik.errors.filter}
           InputProps={{
             startAdornment: (
@@ -92,7 +92,9 @@ const Filter = ({
 };
 
 Filter.propTypes = {
-  handleFilterInputChange: PropTypes.func.isRequired,
+  handleFilterInputChange: PropTypes.func,
+  handleFilterCategoryChange: PropTypes.func,
+  categories: PropTypes.arrayOf(PropTypes.string),
 };
 
 export default Filter;
