@@ -1,19 +1,31 @@
 import PropTypes from "prop-types";
 import * as Yup from "yup";
+import { nanoid } from "nanoid";
 import { StyledFilterForm, StyledFilterLabel } from "./StyledFilter";
 import { useFormik } from "formik";
 import { useEffect } from "react";
 import SearchIcon from "@mui/icons-material/Search";
-import { InputAdornment, TextField } from "@mui/material";
+import {
+  FormControl,
+  InputAdornment,
+  InputLabel,
+  NativeSelect,
+  TextField,
+} from "@mui/material";
 
 const validationSchema = Yup.object().shape({
   filter: Yup.string().min(3, "Minimum 3 letters required"),
 });
 
-const Filter = ({ handleFilterInputChange }) => {
+const Filter = ({
+  handleFilterInputChange,
+  categories,
+  handleFilterCategoryChange,
+}) => {
   const formik = useFormik({
     initialValues: {
       filter: "",
+      category: "none",
     },
     validationSchema,
     validateOnChange: true,
@@ -22,7 +34,6 @@ const Filter = ({ handleFilterInputChange }) => {
   useEffect(() => {
     if (!formik.errors.filter && !formik.isValidating) {
       handleFilterInputChange(formik.values.filter);
-      console.log("request");
     }
   }, [
     formik.values.filter,
@@ -51,6 +62,30 @@ const Filter = ({ handleFilterInputChange }) => {
           onChange={formik.handleChange}
           sx={{ width: "320px" }}
         />
+        <FormControl>
+          <InputLabel variant="standard" htmlFor="uncontrolled-native">
+            Category
+          </InputLabel>
+          <NativeSelect
+            value={formik.values.category}
+            onChange={(ev) => {
+              formik.handleChange(ev);
+              handleFilterCategoryChange(ev);
+            }}
+            inputProps={{
+              name: "category",
+            }}
+          >
+            <option value="none">None</option>
+            {categories.map((category) => {
+              return (
+                <option key={nanoid()} value={category}>
+                  {category}
+                </option>
+              );
+            })}
+          </NativeSelect>
+        </FormControl>
       </StyledFilterLabel>
     </StyledFilterForm>
   );
