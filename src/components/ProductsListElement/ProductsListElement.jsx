@@ -18,13 +18,17 @@ const ProductsListElement = ({ bsr_category, img, link, name, price }) => {
         }}
       >
         <CardActionArea
+          component="a"
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
           sx={{
             width: "452px",
             height: "480px",
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
-            alignItems: "flex-start"
+            alignItems: "flex-start",
           }}
         >
           <CardMedia
