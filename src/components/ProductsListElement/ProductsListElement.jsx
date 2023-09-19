@@ -35,7 +35,7 @@ const ProductsListElement = ({ bsr_category, img, link, name, price }) => {
             component="img"
             image={img}
             alt={name}
-            sx={{ height: "320px" }}
+            sx={{ height: "320px", objectFit: "contain" }}
           />
           <CardContent
             sx={{
