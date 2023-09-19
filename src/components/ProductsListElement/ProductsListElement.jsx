@@ -11,7 +11,7 @@ const ProductsListElement = ({ bsr_category, img, link, name, price }) => {
       <Card
         sx={{
           width: "452px",
-          height: "480px",
+          height: "492px",
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",

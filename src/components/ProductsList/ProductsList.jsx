@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
 import ProductsListElement from "../ProductsListElement/ProductsListElement";
-import { Grid } from "@mui/material";
+import { Container, Grid } from "@mui/material";
 
 const ProductsList = ({ products }) => {
-  return (
+  return products.length !== 0 ? (
     <Grid container spacing={3} justifyContent="center">
       {products.map(({ asin, bsr_category, img, link, name, price }) => {
         return (
@@ -18,6 +18,10 @@ const ProductsList = ({ products }) => {
         );
       })}
     </Grid>
+  ) : (
+    <Container sx={{ display: "flex", justifyContent: "center" }}>
+      <h1>Sorry, there's nothing found!</h1>
+    </Container>
   );
 };
 

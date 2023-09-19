@@ -8,7 +8,7 @@ import { useDebounce } from "../hooks/useDebounce";
 const Products = () => {
   const [products, setProducts] = useState([]);
   const [filter, setFilter] = useState("");
-  const debouncedFilter = useDebounce(filter, 800);
+  const debouncedFilter = useDebounce(filter, 700);
 
   const handleFilterInputChange = useCallback((value) => {
     setFilter(value);

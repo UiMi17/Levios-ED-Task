@@ -1,12 +1,10 @@
 import PropTypes from "prop-types";
 import * as Yup from "yup";
-import {
-  StyledFilterForm,
-  StyledFilterInput,
-  StyledErrorMessage,
-} from "./StyledFilter";
+import { StyledFilterForm, StyledFilterLabel } from "./StyledFilter";
 import { useFormik } from "formik";
 import { useEffect } from "react";
+import SearchIcon from "@mui/icons-material/Search";
+import { InputAdornment, TextField } from "@mui/material";
 
 const validationSchema = Yup.object().shape({
   filter: Yup.string().min(3, "Minimum 3 letters required"),
@@ -34,19 +32,26 @@ const Filter = ({ handleFilterInputChange }) => {
   ]);
 
   return (
-    <StyledFilterForm>
-      <label>
-        <StyledFilterInput
-          type="text"
+    <StyledFilterForm onSubmit={(ev) => ev.preventDefault()}>
+      <StyledFilterLabel>
+        <TextField
           name="filter"
-          value={formik.values.filter}
-          onChange={formik.handleChange}
+          error={formik.errors.filter}
+          helperText={formik.errors.filter}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <SearchIcon sx={{ fill: "rgba(15, 10, 222, 0.75)" }} />
+              </InputAdornment>
+            ),
+          }}
+          size="small"
+          variant="standard"
           placeholder="Search for a product"
+          onChange={formik.handleChange}
+          sx={{ width: "320px" }}
         />
-        {formik.errors.filter ? (
-          <StyledErrorMessage>{formik.errors.filter}</StyledErrorMessage>
-        ) : null}
-      </label>
+      </StyledFilterLabel>
     </StyledFilterForm>
   );
 };
