@@ -1,9 +1,10 @@
 import PropTypes from "prop-types";
 import ProductsListElement from "../ProductsListElement/ProductsListElement";
+import { Grid } from "@mui/material";
 
 const ProductsList = ({ products }) => {
   return (
-    <ul>
+    <Grid container spacing={3} justifyContent="center">
       {products.map(({ asin, bsr_category, img, link, name, price }) => {
         return (
           <ProductsListElement
@@ -16,7 +17,7 @@ const ProductsList = ({ products }) => {
           />
         );
       })}
-    </ul>
+    </Grid>
   );
 };
 

@@ -1,20 +1,58 @@
 import PropTypes from "prop-types";
-import {
-  StyledCategory,
-  StyledImage,
-  StyledLink,
-  StyledListItem,
-  StyledPrice,
-} from "./StyledProductsListElement";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import { CardActionArea, Grid } from "@mui/material";
 
 const ProductsListElement = ({ bsr_category, img, link, name, price }) => {
   return (
-    <StyledListItem>
-      <StyledImage src={img} alt={name} />
-      <StyledLink href={link}>{name}</StyledLink>
-      <StyledPrice>Price: {price}</StyledPrice>
-      <StyledCategory>Category: {bsr_category}</StyledCategory>
-    </StyledListItem>
+    <Grid item>
+      <Card
+        sx={{
+          width: "452px",
+          height: "480px",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+        }}
+      >
+        <CardActionArea
+          sx={{
+            width: "452px",
+            height: "480px",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+            alignItems: "flex-start"
+          }}
+        >
+          <CardMedia
+            component="img"
+            image={img}
+            alt={name}
+            sx={{ height: "320px" }}
+          />
+          <CardContent
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+            }}
+          >
+            <Typography gutterBottom variant="h5" component="div">
+              Category: {bsr_category}
+            </Typography>
+            <Typography gutterBottom variant="subtitle2" component="div">
+              Price: {price}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              {name}
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+      </Card>
+    </Grid>
   );
 };
 

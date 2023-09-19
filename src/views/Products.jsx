@@ -10,12 +10,9 @@ const Products = () => {
   const [filter, setFilter] = useState("");
   const debouncedFilter = useDebounce(filter, 800);
 
-  const handleFilterInputChange = useCallback(
-    (value) => {
-      setFilter(value);
-    },
-    []
-  );
+  const handleFilterInputChange = useCallback((value) => {
+    setFilter(value);
+  }, []);
 
   useEffect(() => {
     const getProducts = async () => {
