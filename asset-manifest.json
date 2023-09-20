@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Levios-ED-Task/static/css/main.06e6d034.css",
+    "main.js": "/Levios-ED-Task/static/js/main.106bca99.js",
+    "index.html": "/Levios-ED-Task/index.html",
+    "main.06e6d034.css.map": "/Levios-ED-Task/static/css/main.06e6d034.css.map",
+    "main.106bca99.js.map": "/Levios-ED-Task/static/js/main.106bca99.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.06e6d034.css",
+    "static/js/main.106bca99.js"
+  ]
+}
