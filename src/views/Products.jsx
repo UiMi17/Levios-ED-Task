@@ -9,39 +9,28 @@ const Products = () => {
   const [products, setProducts] = useState([]);
   const [filter, setFilter] = useState("");
   const debouncedFilter = useDebounce(filter, 700);
-  const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("none");
+  const categories = [
+    ...new Set(products.map(({ bsr_category }) => bsr_category)),
+  ];
+
+  useEffect(() => {
+    const getProducts = async () => {
+      const products = await fetchProducts();
+
+      setProducts(products);
+    };
+
+    getProducts();
+  }, []);
 
   const handleFilterInputChange = useCallback((value) => {
     setFilter(value);
   }, []);
 
-  const handleFilterCategoryChange = (ev) => {
-    setSelectedCategory(ev.target.value);
+  const handleFilterCategoryChange = (value) => {
+    setSelectedCategory(value);
   };
-
-  useEffect(() => {
-    const handleProducts = async () => {
-      const products = await fetchProducts();
-
-      setCategories((prevCategories) => {
-        const categoriesToSet = products.reduce(
-          (acc, { bsr_category }) => {
-            if (!acc.includes(bsr_category)) {
-              acc.push(bsr_category);
-            }
-            return acc;
-          },
-          [...prevCategories]
-        );
-        return categoriesToSet;
-      });
-
-      setProducts(products);
-    };
-
-    handleProducts();
-  }, []);
 
   const filteredProducts = products.filter((product) => {
     return (

@@ -12,6 +12,7 @@ import {
   NativeSelect,
   TextField,
 } from "@mui/material";
+import { useSearchParams } from "react-router-dom";
 
 const validationSchema = Yup.object().shape({
   filter: Yup.string().min(3, "Minimum 3 letters required"),
@@ -22,10 +23,14 @@ const Filter = ({
   categories,
   handleFilterCategoryChange,
 }) => {
+  const [filterQuery, setFilterQuery] = useSearchParams();
+  const query = filterQuery.get("filter");
+  const categoryQuery = filterQuery.get("category");
+
   const formik = useFormik({
     initialValues: {
-      filter: "",
-      category: "none",
+      filter: query || "",
+      category: categoryQuery || "none",
     },
     validationSchema,
     validateOnChange: true,
@@ -33,13 +38,21 @@ const Filter = ({
 
   useEffect(() => {
     if (!formik.errors.filter && !formik.isValidating) {
+      setFilterQuery({
+        filter: formik.values.filter,
+        category: formik.values.category,
+      });
       handleFilterInputChange(formik.values.filter);
+      handleFilterCategoryChange(formik.values.category);
     }
   }, [
     formik.values.filter,
+    formik.values.category,
     formik.errors.filter,
     formik.isValidating,
     handleFilterInputChange,
+    handleFilterCategoryChange,
+    setFilterQuery,
   ]);
 
   return (
@@ -47,6 +60,7 @@ const Filter = ({
       <StyledFilterLabel>
         <TextField
           name="filter"
+          value={formik.values.filter}
           error={formik.errors.filter !== undefined}
           helperText={formik.errors.filter}
           InputProps={{
@@ -68,10 +82,7 @@ const Filter = ({
           </InputLabel>
           <NativeSelect
             value={formik.values.category}
-            onChange={(ev) => {
-              formik.handleChange(ev);
-              handleFilterCategoryChange(ev);
-            }}
+            onChange={formik.handleChange}
             inputProps={{
               name: "category",
             }}
