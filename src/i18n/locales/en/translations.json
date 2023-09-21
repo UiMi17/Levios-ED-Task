@@ -6,5 +6,7 @@
   "categoryNoneOption": "None",
   "productsFilterResult": "Sorry, there's nothing found!",
   "productsElementPrice": "Price",
-  "productsElementCategory": "Category"
+  "productsElementCategory": "Category",
+  "goBackProductBtn": "Go Back",
+  "onProductImgHoverText": "Look on Amazon"
 }

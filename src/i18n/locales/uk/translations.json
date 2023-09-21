@@ -6,5 +6,7 @@
   "categoryNoneOption": "Не обрано",
   "productsFilterResult": "Нічого не знайдено.",
   "productsElementPrice": "Ціна",
-  "productsElementCategory": "Категорія"
+  "productsElementCategory": "Категорія",
+  "goBackProductBtn": "Назад",
+  "onProductImgHoverText": "Переглянути на Amazon"
 }
