@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { useTranslation } from "react-i18next";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -6,6 +7,7 @@ import Typography from "@mui/material/Typography";
 import { CardActionArea, Grid } from "@mui/material";
 
 const ProductsListElement = ({ bsr_category, img, link, name, price }) => {
+const {t} = useTranslation()
   return (
     <Grid item>
       <Card
@@ -45,10 +47,10 @@ const ProductsListElement = ({ bsr_category, img, link, name, price }) => {
             }}
           >
             <Typography gutterBottom variant="h5" component="div">
-              Category: {bsr_category}
+              {t("productsElementCategory")}: {bsr_category}
             </Typography>
             <Typography gutterBottom variant="subtitle2" component="div">
-              Price: {price}
+            {t("productsElementPrice")}: {price}
             </Typography>
             <Typography variant="body2" color="text.secondary">
               {name}

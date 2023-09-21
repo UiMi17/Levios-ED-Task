@@ -1,9 +1,10 @@
 import PropTypes from "prop-types";
 import * as Yup from "yup";
 import { nanoid } from "nanoid";
-import { StyledFilterForm, StyledFilterLabel } from "./StyledFilter";
 import { useFormik } from "formik";
 import { useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import SearchIcon from "@mui/icons-material/Search";
 import {
   FormControl,
@@ -12,11 +13,7 @@ import {
   NativeSelect,
   TextField,
 } from "@mui/material";
-import { useSearchParams } from "react-router-dom";
-
-const validationSchema = Yup.object().shape({
-  filter: Yup.string().min(3, "Minimum 3 letters required"),
-});
+import { StyledFilterForm, StyledFilterLabel } from "./StyledFilter";
 
 const Filter = ({
   handleFilterInputChange,
@@ -24,8 +21,13 @@ const Filter = ({
   handleFilterCategoryChange,
 }) => {
   const [filterQuery, setFilterQuery] = useSearchParams();
+  const { t } = useTranslation();
   const query = filterQuery.get("filter");
   const categoryQuery = filterQuery.get("category");
+
+  const validationSchema = Yup.object().shape({
+    filter: Yup.string().min(3, t("filterError")),
+  });
 
   const formik = useFormik({
     initialValues: {
@@ -72,13 +74,13 @@ const Filter = ({
           }}
           size="small"
           variant="standard"
-          placeholder="Search for a product"
+          placeholder={t("filterPlaceholder")}
           onChange={formik.handleChange}
           sx={{ width: "320px" }}
         />
         <FormControl>
           <InputLabel variant="standard" htmlFor="uncontrolled-native">
-            Category
+            {t("categoryLabel")}
           </InputLabel>
           <NativeSelect
             value={formik.values.category}
@@ -87,7 +89,7 @@ const Filter = ({
               name: "category",
             }}
           >
-            <option value="none">None</option>
+            <option value="none">{t("categoryNoneOption")}</option>
             {categories.map((category) => {
               return (
                 <option key={nanoid()} value={category}>

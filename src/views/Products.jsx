@@ -1,15 +1,17 @@
 import { useCallback, useEffect, useState } from "react";
-import ProductsList from "../components/ProductsList/ProductsList";
+import { useDebounce } from "../hooks/useDebounce";
+import { useTranslation } from "react-i18next";
 import { fetchProducts } from "../services/mockAPI";
+import ProductsList from "../components/ProductsList/ProductsList";
 import Filter from "../components/Filter/Filter";
 import ErrorBoundary from "../highOrderedComponents/ErrorBoundary";
-import { useDebounce } from "../hooks/useDebounce";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
   const [filter, setFilter] = useState("");
   const debouncedFilter = useDebounce(filter, 700);
   const [selectedCategory, setSelectedCategory] = useState("none");
+  const { t } = useTranslation();
   const categories = [
     ...new Set(products.map(({ bsr_category }) => bsr_category)),
   ];
@@ -46,7 +48,9 @@ const Products = () => {
         categories={categories}
         handleFilterCategoryChange={handleFilterCategoryChange}
       />
-      <ErrorBoundary fallback={<h1>Oops. Something went wrong</h1>}>
+      <ErrorBoundary
+        fallback={<h1 style={{ textAlign: "center" }}>{t("boundaryError")}</h1>}
+      >
         <ProductsList products={filteredProducts} />
       </ErrorBoundary>
     </>
