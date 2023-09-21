@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/levios-ed-task/static/css/main.06e6d034.css",
-    "main.js": "/levios-ed-task/static/js/main.79e8a53e.js",
+    "main.css": "/levios-ed-task/static/css/main.3c55d137.css",
+    "main.js": "/levios-ed-task/static/js/main.536ded7b.js",
     "index.html": "/levios-ed-task/index.html",
-    "main.06e6d034.css.map": "/levios-ed-task/static/css/main.06e6d034.css.map",
-    "main.79e8a53e.js.map": "/levios-ed-task/static/js/main.79e8a53e.js.map"
+    "main.3c55d137.css.map": "/levios-ed-task/static/css/main.3c55d137.css.map",
+    "main.536ded7b.js.map": "/levios-ed-task/static/js/main.536ded7b.js.map"
   },
   "entrypoints": [
-    "static/css/main.06e6d034.css",
-    "static/js/main.79e8a53e.js"
+    "static/css/main.3c55d137.css",
+    "static/js/main.536ded7b.js"
   ]
 }
