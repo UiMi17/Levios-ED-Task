@@ -11,6 +11,7 @@ const ProductsList = ({ products }) => {
         return (
           <ProductsListElement
             key={asin}
+            asin={asin}
             bsr_category={bsr_category}
             img={img}
             link={link}

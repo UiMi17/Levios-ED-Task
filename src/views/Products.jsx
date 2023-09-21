@@ -1,13 +1,15 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { useDebounce } from "../hooks/useDebounce";
+import useProducts from "../hooks/useProducts";
 import { useTranslation } from "react-i18next";
-import { fetchProducts } from "../services/mockAPI";
+// import { fetchProducts } from "../services/mockAPI";
 import ProductsList from "../components/ProductsList/ProductsList";
 import Filter from "../components/Filter/Filter";
 import ErrorBoundary from "../highOrderedComponents/ErrorBoundary";
 
 const Products = () => {
-  const [products, setProducts] = useState([]);
+  // const [products, setProducts] = useState([]);
+  const products = useProducts();
   const [filter, setFilter] = useState("");
   const debouncedFilter = useDebounce(filter, 700);
   const [selectedCategory, setSelectedCategory] = useState("none");
@@ -16,15 +18,15 @@ const Products = () => {
     ...new Set(products.map(({ bsr_category }) => bsr_category)),
   ];
 
-  useEffect(() => {
-    const getProducts = async () => {
-      const products = await fetchProducts();
+  // useEffect(() => {
+  //   const getProducts = async () => {
+  //     const products = await fetchProducts();
 
-      setProducts(products);
-    };
+  //     setProducts(products);
+  //   };
 
-    getProducts();
-  }, []);
+  //   getProducts();
+  // }, []);
 
   const handleFilterInputChange = useCallback((value) => {
     setFilter(value);
